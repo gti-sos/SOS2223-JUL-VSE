@@ -434,8 +434,10 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Numero de campos\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData).to.have.a.lengthOf(9)\r",
+							"var jsonData = JSON.parse(request.data);\r",
+							"var numFields = Object.keys(jsonData).length;\r",
+							"\r",
+							"pm.expect(numFields).to.equal(9);\r",
 							"});\r",
 							""
 						],
