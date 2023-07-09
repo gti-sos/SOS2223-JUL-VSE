@@ -1,0 +1,719 @@
+{
+	"info": {
+		"_postman_id": "332bcf68-ba38-4360-9247-f5a41a142769",
+		"name": "SOS2223-JUL-VSE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26059751",
+		"_collection_link": "https://winter-station-251835.postman.co/workspace/SOS2223-JUL-VSE~9c6b0aac-7428-4b4c-891b-baac3913f93c/collection/26059751-332bcf68-ba38-4360-9247-f5a41a142769?action=share&creator=26059751&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "DELETE URL Base inicio",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET LoadInitialdata",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly/loadInitialData",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET URL base",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Recurso especifico 200OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly/CLEMENTINA MEDIA TEMPORADA-CLEMENULES/MANDARINA",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly",
+						"CLEMENTINA MEDIA TEMPORADA-CLEMENULES",
+						"MANDARINA"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Recurso especifico 200OK un solo elemento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly/CABALLAR/CEBADA",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly",
+						"CABALLAR",
+						"CEBADA"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Recurso especifico Error 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly/CABALLAR/CEBADAa",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly",
+						"CABALLAR",
+						"CEBADAa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Paginacion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly?price=180&type=CEBADA&limit=1",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly"
+					],
+					"query": [
+						{
+							"key": "price",
+							"value": "180"
+						},
+						{
+							"key": "type",
+							"value": "CEBADA"
+						},
+						{
+							"key": "limit",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE URL base",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET LoadInitialData despues del delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly/loadInitialData",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Recurso especifico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly/DE ORUJO REFINADO/2013/52/CO-Córdoba",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly",
+						"DE ORUJO REFINADO",
+						"2013",
+						"52",
+						"CO-Córdoba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Recurso especifico 404",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly/DE ORUJO REFINADO/2013/52/CO-Córdoba",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly",
+						"DE ORUJO REFINADO",
+						"2013",
+						"52",
+						"CO-Córdoba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST URL Base",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Numero de campos\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.a.lengthOf(9)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"product\": \"REFINADOa\",\r\n        \"type\": \"Aceites de girasolv\",\r\n        \"class\": \"S.E.c\",\r\n        \"unit\": \"100 kgc\",\r\n        \"market\": \"CO-Córdobva\",\r\n        \"commpos\": \"A.I.v\",\r\n        \"price\": 77.53,\r\n        \"year\": 2015,\r\n        \"week\": 50\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST URL base 400",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"product\": \"REFINADOa\",\r\n        \"type\": \"Aceites de girasolv\",\r\n        \"class\": \"S.E.\",\r\n        \"unit\": \"100 kg\",\r\n        \"market\": \"CO-Córdoba\",\r\n        \"commpos\": \"A.I.\",\r\n        \"price\": 77.53\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST URL base Recurso existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {\r",
+							"    pm.response.to.have.status(409);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"product\": \"REFINADOa\",\r\n        \"type\": \"Aceites de girasolv\",\r\n        \"class\": \"S.E.c\",\r\n        \"unit\": \"100 kgc\",\r\n        \"market\": \"CO-Córdobva\",\r\n        \"commpos\": \"A.I.v\",\r\n        \"price\": 77.53,\r\n        \"year\": 2015,\r\n        \"week\": 50\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Recurso especifico(no permitido)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly/mercados/CO-Córdoba",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly",
+						"mercados",
+						"CO-Córdoba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT URL base(no permitido)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Recurso especifico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"product\": \"CLEMENTINA MEDIA TEMPORADA-CLEMENULES\",\r\n        \"type\": \"MANDARINA\",\r\n        \"class\": \"S.E.\",\r\n        \"unit\": \"101 kg\",\r\n        \"market\": \"HU-Huelva\",\r\n        \"commpos\": \"Árbol\",\r\n        \"price\": 30,\r\n        \"year\": 2014,\r\n        \"week\": 1\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly/HU-Huelva/CLEMENTINA MEDIA TEMPORADA-CLEMENULES/2014/1",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly",
+						"HU-Huelva",
+						"CLEMENTINA MEDIA TEMPORADA-CLEMENULES",
+						"2014",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE URL Base fin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly",
+					"protocol": "https",
+					"host": [
+						"sos2223-jul-vse",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"agroprices-weekly"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

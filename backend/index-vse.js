@@ -4,7 +4,7 @@ var db = new Datastore();
 function vse (app){
     const BASE_API_URL = "/api/v1";
     const rutavse = "/api/v1/agroprices-weekly";
-    const API_DOC_PORTAL = "https://documenter.getpostman.com/view/26059751/2s93K1oezi";
+    const API_DOC_PORTAL = "https://documenter.getpostman.com/view/26059751/2s93zH2KLL";
 
     //POSTMAN docs
     app.get(rutavse+"/docs",(req,res)=>{
@@ -17,16 +17,16 @@ function vse (app){
     db.find({}, function (err, docs) {
       if (docs.length === 0) {
         db.insert([
-          {product: "REFINADO",type: "Aceites de girasol",class: "S.E.",unit: "100 kg",market: "CO-Córdoba",commpos: "A.I.",price: 77.53,date: "30-12-2013->5-1-2014"},
-          {product: "DE ORUJO CRUDO",type: "ACEITES DE OLIVA",class: "5 g BAS. 10",unit: "100 kg",market: "CO-Córdoba",commpos: "A.I.",price: 79.50,date: "6-1-2014->12-1-2014"},
-          {product: "DE ORUJO REFINADO",type: "ACEITES DE OLIVA",class: "S.E.",unit: "100 kg",market: "CO-Córdoba",commpos: "A.I.",price: 118.69,date: "30-12-2013->5-1-2014"},
-          {product: "VÍRGENES-VIRGEN EXTRA",type: "ACEITES DE OLIVA",class: "S.E.",unit: "100 kg",market: "GR-Alhama",commpos: "A.I.",price: 203.00,date: "6-1-2014->12-1-2014"},
-          {product: "BLANCA O COMÚN",type: "AVENA",class: "S.E.",unit: "t",market: "SE-Sevilla",commpos: "S.Alm.",price: 183.00,date: "30-12-2013->5-1-2014"},
-          {product: "CABALLAR",type: "CEBADA",class: "S.E.",unit: "t",market: "GR-Montes Occidentales",commpos: "S.Alm.",price: 180.00,date: "30-12-2013->5-1-2014"},
-          {product: "CERVECERA",type: "CEBADA",class: "S.E.",unit: "t",market: "GR-Alhama",commpos: "S.Alm.",price: 180.00,date: "6-1-2014->12-1-2014"},
-          {product: "FINO O MESERO",type: "LIMÓN",class: "I",unit: "100 kg",market: "MA-Málaga",commpos: "C.M.",price: 85.00,date: "30-12-2013->5-1-2014"},
-          {product: "CLEMENTINA MEDIA TEMPORADA-CLEMENULES",type: "MANDARINA",class: "S.E.",unit: "100 kg",market: "HU-Huelva",commpos: "Árbol",price: 30.00,date: "6-1-2014->12-1-2014"},
-          {product: "CLEMENTINA MEDIA TEMPORADA-CLEMENULES",type: "MANDARINA",class: "S.E.",unit: "100 kg",market: "MA-Málaga",commpos: "Árbol",price: 16.00,date: "6-1-2014->12-1-2014"}
+          {product: "REFINADO",type: "Aceites de girasol",class: "S.E.",unit: "100 kg",market: "CO-Córdoba",commpos: "A.I.",price: 77.53,year: 2013, week: 52},
+          {product: "DE ORUJO CRUDO",type: "ACEITES DE OLIVA",class: "5 g BAS. 10",unit: "100 kg",market: "CO-Córdoba",commpos: "A.I.",price: 79.50,year: 2014, week: 1},
+          {product: "DE ORUJO REFINADO",type: "ACEITES DE OLIVA",class: "S.E.",unit: "100 kg",market: "CO-Córdoba",commpos: "A.I.",price: 118.69,year: 2013, week: 52},
+          {product: "VÍRGENES-VIRGEN EXTRA",type: "ACEITES DE OLIVA",class: "S.E.",unit: "100 kg",market: "GR-Alhama",commpos: "A.I.",price: 203.00,year: 2014, week: 1},
+          {product: "BLANCA O COMÚN",type: "AVENA",class: "S.E.",unit: "t",market: "SE-Sevilla",commpos: "S.Alm.",price: 183.00,year: 2013, week: 52},
+          {product: "CABALLAR",type: "CEBADA",class: "S.E.",unit: "t",market: "GR-Montes Occidentales",commpos: "S.Alm.",price: 180.00,year: 2013, week: 52},
+          {product: "CERVECERA",type: "CEBADA",class: "S.E.",unit: "t",market: "GR-Alhama",commpos: "S.Alm.",price: 180.00,year: 2014, week: 1},
+          {product: "FINO O MESERO",type: "LIMÓN",class: "I",unit: "100 kg",market: "MA-Málaga",commpos: "C.M.",price: 85.00,year: 2013, week: 52},
+          {product: "CLEMENTINA MEDIA TEMPORADA-CLEMENULES",type: "MANDARINA",class: "S.E.",unit: "100 kg",market: "HU-Huelva",commpos: "Árbol",price: 30.00,year: 2014, week: 1},
+          {product: "CLEMENTINA MEDIA TEMPORADA-CLEMENULES",type: "MANDARINA",class: "S.E.",unit: "100 kg",market: "MA-Málaga",commpos: "Árbol",price: 16.00,year: 2014, week: 1}
         ], function (err, newDocs) {
             res.status(201).json('Se han creado 10 datos');
             console.log("Se han creado 10 datos");
@@ -101,9 +101,12 @@ function vse (app){
       if (req.query.price) {
           query.price = Number(req.query.price);
       }
-      if (req.query.date) {
-          query.date = req.query.date;
+      if (req.query.year) {
+          query.year = Number(req.query.year);
       }
+      if (req.query.week) {
+        query.week = Number(req.query.week);
+    }
 
       //Búsquedas numéricas
 
@@ -151,12 +154,18 @@ function vse (app){
 
       // POST
       app.post(rutavse, (req, res) => {
-        console.log(req.body);
         let newReq = req.body;
-        if (!req.body || !newReq.hasOwnProperty('product') || !newReq.hasOwnProperty('type') || 
-        !newReq.hasOwnProperty('class') || !newReq.hasOwnProperty('unit') || 
-        !newReq.hasOwnProperty('market') || !newReq.hasOwnProperty('commpos') ||
-        !newReq.hasOwnProperty('price') || !newReq.hasOwnProperty('date')) {
+        console.log(newReq);
+        if (!req.body || 
+        !newReq.product || 
+        !newReq.type || 
+        !newReq.class || 
+        !newReq.unit || 
+        !newReq.market || 
+        !newReq.commpos ||
+        !newReq.price || 
+        !newReq.year || 
+        !newReq.week) {
             res.status(400).json({ message: 'Verifique que ha insertado todos los campos' });
         } else {
             const newData = req.body;
@@ -167,8 +176,9 @@ function vse (app){
                 unit: newData.unit,
                 market: newData.market,
                 commpos: newData.commpos,
-                price: newData.price,
-                date: newData.date,
+                price: Number(newData.price),
+                year: Number(newData.year),
+                week: Number(newData.week)
             }, (err, docs) => {
                 if (docs.length > 0) {
                     res.status(409).json({ message: 'El recurso ya existe.' });
@@ -195,17 +205,23 @@ function vse (app){
   });
   
 
-      //PUT actualizar precio de un producto en un mercado en la semana 1
-      app.put(rutavse + '/:market' + '/:product' , (req, res) => {
+      //PUT actualizar precio de un producto en un mercado
+      app.put(rutavse + '/:market' + '/:product' + '/:year' + '/:week', (req, res) => {
         const market = req.params.market;
+        const year = Number(req.params.year);
+        const week = Number(req.params.week);
         const product = req.params.product;
         
 
-        db.findOne({ market: market, product: product }, (err, existe) => {
+        db.findOne({ market: market, product: product, year: year, week:week}, (err, existe) => {
             if (err) {
                 return res.status(500).send(err);
             }
-            if (!existe || market !== req.body.market || product !== req.body.product ) {
+            if (!existe || 
+                market !== req.body.market || 
+                product !== req.body.product || 
+                year !== Number(req.body.year) || 
+                week !== Number(req.body.week)) {
                 return res.status(400).send("Disposición incorrecta.");
             } else {
                 existe.type = req.body.type || existe.type;
@@ -213,7 +229,6 @@ function vse (app){
                 existe.unit = req.body.unit || existe.unit;
                 existe.commpos = req.body.commpos || existe.commpos;
                 existe.price = Number(req.body.price) || existe.price;
-                existe.date = req.body.date || existe.date;
                 db.update({ _id: existe._id }, existe, {}, (err, numReplaced) => {
                     if (err) {
                         return res.status(500).send(err);
@@ -250,12 +265,13 @@ function vse (app){
 
 
   //DELETE de un recurso.
-  app.delete(rutavse + "/:product/:date/:market", (req, res) => {
+  app.delete(rutavse + "/:product/:year/:week/:market", (req, res) => {
       const product = req.params.product;
-      const date = req.params.date;
+      const year = Number(req.params.year);
+      const week = Number(req.params.week);
       const market = req.params.market;
       
-      db.remove({ product: product, date: date, market: market }, {}, (err, numRemoved) => {
+      db.remove({ product: product, year: year, week: week ,market: market }, {}, (err, numRemoved) => {
       if (err) {
         res.status(500).json({message: "Error interno del servidor."});
       } else if (numRemoved === 0) {
