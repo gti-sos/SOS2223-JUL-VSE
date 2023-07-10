@@ -1,5 +1,5 @@
 import express from "express";
-//import { handler } from "./frontend/build/handler.js";
+import { handler } from "./frontend/build/handler.js";
 //import cors from 'cors';
 
 
@@ -8,14 +8,13 @@ var port = process.env.PORT || 12345;
 var app = express();
 //app.use(cors());
 app.use(express.json());
-app.use("/", express.static("./public"));
 
 
 import { vse } from "./backend/index-vse.js";
 vse(app);
 
 
-//app.use(handler);
+app.use(handler);
 
 app.listen(port, ()=>{
   console.log(`server ready in port ${port}`);
