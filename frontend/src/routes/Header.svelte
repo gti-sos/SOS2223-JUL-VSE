@@ -8,24 +8,14 @@
 
     <Nav style="display: flex;">
         <NavLink href="/" class="nav-link" style="margin-right: 20px;" ><h6 style="font-weight:bold;  color:black; font-size: 18px;">Inicio</h6> <Icon name="house-fill"/></NavLink>
-        <NavItem>
-            <ButtonDropdown>
-                <DropdownToggle color="" style="font-weight:bold; color = #; font-size: 18px;" caret>Front-ends</DropdownToggle>
-                <DropdownMenu>
-                    <DropdownItem><a href="/agrodata-almeria">agrodata-almeria</a></DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem><a href="/agroprices-weekly">agroprices-weekly</a></DropdownItem>
-                </DropdownMenu>
-            </ButtonDropdown>
-        </NavItem>
 
         <NavItem>
             <Dropdown nav {isOpen} toggle={() => (isOpen = !isOpen)}>
-                <DropdownToggle nav caret style="font-weight:bold; color:black; font-size: 18px;">Provisiones</DropdownToggle>
+                <DropdownToggle nav caret style="font-weight:bold; color:black; font-size: 18px;">Precios</DropdownToggle>
                 <DropdownMenu>
-                <DropdownItem><a href="/provisions-for-the-year-2014">Página de Inicio</a></DropdownItem>
+                <DropdownItem><a href="/agroprices-weekly">Página de Inicio</a></DropdownItem>
                 <DropdownItem divider/>
-                <DropdownItem><a href="/provisions-for-the-year-2014/graphs">Grafos</a></DropdownItem>     
+                <DropdownItem><a href="/agroprices-weekly/graphs">Grafos</a></DropdownItem>     
                 <DropdownItem divider/>
                 <DropdownItem><a href="/integrations">Integraciones y Usos</a></DropdownItem>                     
             </DropdownMenu>
