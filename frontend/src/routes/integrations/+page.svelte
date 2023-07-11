@@ -18,7 +18,7 @@
       <CardTitle>Usos</CardTitle>
     </CardHeader>
     <CardBody>
-      <CardLink href="/integrations/usoaliexpress">Widget AliExpress</CardLink>
+      <CardLink href="/integrations/usosimpsons">Widget Simpsons</CardLink>
       <hr>
       <CardLink href="/integrations/usohomiciderate">Widget Homicidios</CardLink>
       <hr>

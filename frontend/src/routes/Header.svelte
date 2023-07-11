@@ -31,7 +31,7 @@
                 <DropdownItem divider/>
                 <DropdownItem><a href="/integrations/withoutproxy">Integración Sin Proxy</a></DropdownItem>     
                 <DropdownItem divider/>
-                <DropdownItem><a href="/integrations/usoaliexpress">Widget AliExpress</a></DropdownItem>  
+                <DropdownItem><a href="/integrations/usosimpsons">Widget Simpsons</a></DropdownItem>  
                 <DropdownItem divider/>
                 <DropdownItem><a href="/integrations/usohomiciderate">Widget Homicidios</a></DropdownItem>  
                 <DropdownItem divider/>
