@@ -43,8 +43,8 @@
 
   }
 
-  var provincias = [];
-  var numero_provisiones = [];
+  var mercados = [];
+  var numero_mercados = [];
 
   async function getData2(){
 
@@ -54,32 +54,32 @@
     });
     if(res.ok){
         try{
-            const provisions = await res.json();
+            const markets = await res.json();
 
-            const dic = provisions.reduce((res, actual) => { //Agrupar por provincia
-                const prov = actual.province;
-                res[prov] = res[prov] || [];
-                res[prov].push(actual);
+            const dic = markets.reduce((res, actual) => { //Agrupar por provincia
+                const mark = actual.market;
+                res[mark] = res[mark] || [];
+                res[mark].push(actual);
                 return res;
             }, {} ); // inicializar el res
             
             const groupedArray = Object.keys(dic).map(key => dic[key]);
-            const provinciaLengths = {};
-            let totalProvisions = 0;
+            const marketLengths = {};
+            let totalmarkets = 0;
 
-            groupedArray.forEach(p =>{ //agrupar por provincia: numero de  provisiones 
-                provincias.push(p[0]["province"]);
-                const numProvisions = p.length;
-                numero_provisiones.push(numProvisions);
-                provinciaLengths[p[0]["province"]] = numProvisions;
-                totalProvisions += numProvisions;
+            groupedArray.forEach(p =>{ //agrupar por provincia: numero de  productos 
+                mercados.push(p[0]["market"]);
+                const nummarkets = p.length;
+                numero_mercados.push(nummarkets);
+                marketLengths[p[0]["market"]] = nummarkets;
+                totalmarkets += nummarkets;
             });
             let percentage = {};
-            Object.keys(provinciaLengths).forEach(prov => { // cambiar el numero de provisiones por su porcentage
-              percentage[prov] = (provinciaLengths[prov] / totalProvisions) * 100;
+            Object.keys(marketLengths).forEach(mark => { // cambiar el numero de productos por su porcentage
+              percentage[mark] = (marketLengths[mark] / totalmarkets) * 100;
             });
-            const chartData = Object.entries(percentage).map(([province, porcentage]) => ({
-              name: province,
+            const chartData = Object.entries(percentage).map(([market, porcentage]) => ({
+              name: market,
               y: Number(porcentage.toFixed(2)),
             }));
             
@@ -95,25 +95,25 @@
   }
 
   async function loadCharts(graphData) {
-    const chartData = graphData.map(({province, provisions_number }) => ({
-      y: provisions_number,
-      label: province
+    const chartData = graphData.map(({market, products_number }) => ({
+      y: products_number,
+      label: market
     }));
 
     const chart = new CanvasJS.Chart("chartContainer", {
       animationEnabled: true,
       theme: "light2",
       title: {
-        text: "Provisiones en Andalucía"
+        text: "Productos en Andalucía"
       },
       axisY: {
-        title: "Número de provisiones"
+        title: "Número de productos"
       },
       data: [{
         type: "column",
         showInLegend: true,
         legendMarkerColor: "grey",
-        legendText: "Provisiones por provincia",
+        legendText: "Productos por mercado",
         dataPoints: chartData
       }]
     });
@@ -128,7 +128,7 @@
           type: 'pie'
       },
       title: {
-          text: 'Provisiones',
+          text: 'Productos',
           align: 'left'
       },
       subtitle: {
@@ -162,7 +162,7 @@
 
       series: [
           {
-              name: 'Provincias',
+              name: 'Mercados',
               colorByPoint: true,
               data: graphData
           }
