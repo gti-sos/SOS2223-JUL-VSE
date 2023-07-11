@@ -14,7 +14,7 @@
     getDataComp();
   });
 
-  let API_Comp = "https://sos2223-24.appspot.com/api/proxyoua";    
+  let API_Comp = "https://sos2223-24.appspot.com/api/proxyvse";    
   
   let API = "/api/v2/provisions-for-the-year-2014";
   if (dev){

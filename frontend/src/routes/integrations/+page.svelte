@@ -7,9 +7,9 @@
       <CardTitle>Integraciones</CardTitle>
     </CardHeader>
     <CardBody>
-      <CardLink href="/integrations/withproxy">Integración Con Proxy</CardLink>
+      <CardLink href="/integrations/withProxy">Integración Con Proxy</CardLink>
       <hr>
-      <CardLink href="/integrations/withoutproxy">Integración Sin Proxy</CardLink>
+      <CardLink href="/integrations/withoutProxy">Integración Sin Proxy</CardLink>
       <hr>
     </CardBody>
   </Card>
