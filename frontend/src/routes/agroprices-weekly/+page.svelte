@@ -337,10 +337,10 @@ async function getProducts() {
     }
   }
 
-  async function deleteProduct(product, year, week, market) {
+  async function deleteProduct(market, year, week, product) {
     resultStatus = result = "";
     const res = await fetch(
-      API + "/" + product + "/" + year + "/" + week, + "/" + market,
+      API + "/" + product + "/" + year + "/" + week + "/" + market,
       {
         method: "DELETE",
       }
@@ -434,10 +434,10 @@ async function getProducts() {
               color="danger"
               on:click={() =>
                 deleteProduct(
-                  product.product,
+                  product.market,
                   product.year,
                   product.week,
-                  product.market
+                  product.product
                 )}>Borrar</Button
             >
           </td>
