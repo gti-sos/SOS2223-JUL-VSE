@@ -93,7 +93,7 @@ function vse (app){
     });
 
         //GET periodo concreto + mercado
-        app.get(rutaoua + '/:market', (req, res) => {
+        app.get(rutavse + '/:market', (req, res) => {
             const market = req.params.market;
             const from = Number(req.query.from);
             const to = Number(req.query.to);
