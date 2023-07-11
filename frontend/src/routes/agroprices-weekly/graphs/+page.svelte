@@ -14,7 +14,7 @@
   // @ts-nocheck
   import { onMount } from 'svelte';
   import { dev } from '$app/environment';
-  let API = '/api/v2/provisions-for-the-year-2014';
+  let API = '/api/v1/agroprices-weekly';
   if (dev) API = 'http://localhost:12345' + API;
 
   let data = [];
@@ -178,11 +178,11 @@
 
 <main>
   
-  <h1 style="margin-top: 30px;">Grafo 1: Número de Provisiones en cada Provincia</h1>
+  <h1 style="margin-top: 30px;">Grafo 1: Número de Productos en cada mercado</h1>
   <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
 
-  <h1 style="margin-top: 30px;">Grafo 2: Provisiones Por Provincia</h1>
+  <h1 style="margin-top: 30px;">Grafo 2: Porcentaje de productos de cada mercado</h1>
     <figure class="highcharts-figure">
       <div id="container"></div>
   

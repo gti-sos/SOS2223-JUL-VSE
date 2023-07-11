@@ -12,6 +12,39 @@ function vse (app){
     });
   
   
+
+    //Integración
+    app.get(rutavse + "/data", async (req, res) => {
+
+        console.log(`New GET to /data`);
+        let mercados = ['AL-Almería', 'CA-Cádiz', 'CO-Córdoba', 'GR-Granada', 'HU-Huelva', 'JA-Jaén', 'MA-Málaga', 'SE-Sevilla'];
+
+        var data = [];
+
+        try {
+            // Esperar a que todas las consultas a la base de datos se completen
+            await Promise.all(mercados.map(mercado => {
+
+                return new Promise((resolve, reject) => {
+                    db.find({ market: mercado }).exec(function (err, docs) {
+                        if (err) {
+                            reject(err);
+                        } else {
+                            data.push({ market: mercado, products_number: docs.length });
+                            resolve();
+                        }
+                    });
+                });
+
+            }));
+            res.json(data);
+
+        } catch (err) {
+            // Manejar errores de consulta
+            res.status(500).json(err);
+        }
+    });
+
   //loadInitialData
   app.get(rutavse + "/loadInitialData", (req, res) => {
     db.find({}, function (err, docs) {
@@ -22,12 +55,16 @@ function vse (app){
           {product: "REFINADO",type: "Aceites de girasol",class: "S.E.",unit: "100 kg",market: "CO-Córdoba",commpos: "A.I.",price: 77.53,year: 2012, week: 32},
           {product: "DE ORUJO CRUDO",type: "ACEITES DE OLIVA",class: "5 g BAS. 10",unit: "100 kg",market: "CO-Córdoba",commpos: "A.I.",price: 79.50,year: 2014, week: 1},
           {product: "DE ORUJO REFINADO",type: "ACEITES DE OLIVA",class: "S.E.",unit: "100 kg",market: "CO-Córdoba",commpos: "A.I.",price: 118.69,year: 2013, week: 52},
-          {product: "VÍRGENES-VIRGEN EXTRA",type: "ACEITES DE OLIVA",class: "S.E.",unit: "100 kg",market: "GR-Alhama",commpos: "A.I.",price: 203.00,year: 2014, week: 1},
+          {product: "VÍRGENES-VIRGEN EXTRA",type: "ACEITES DE OLIVA",class: "S.E.",unit: "100 kg",market: "GR-Granada",commpos: "A.I.",price: 203.00,year: 2014, week: 1},
           {product: "BLANCA O COMÚN",type: "AVENA",class: "S.E.",unit: "t",market: "SE-Sevilla",commpos: "S.Alm.",price: 183.00,year: 2013, week: 52},
-          {product: "CABALLAR",type: "CEBADA",class: "S.E.",unit: "t",market: "GR-Montes Occidentales",commpos: "S.Alm.",price: 180.00,year: 2013, week: 52},
-          {product: "CABALLAR",type: "CEBADA",class: "S.E.",unit: "t",market: "GR-Montes Occidentales",commpos: "S.Alm.",price: 172.00,year: 2013, week: 27},
+          {product: "CABALLAR",type: "CEBADA",class: "S.E.",unit: "t",market: "GR-Granada",commpos: "S.Alm.",price: 180.00,year: 2013, week: 52},
+          {product: "CABALLAR",type: "CEBADA",class: "S.E.",unit: "t",market: "GR-Granada",commpos: "S.Alm.",price: 172.00,year: 2013, week: 27},
           {product: "CERVECERA",type: "CEBADA",class: "S.E.",unit: "t",market: "HU-Huelva",commpos: "S.Alm.",price: 195.00,year: 2016, week: 1},
-          {product: "CERVECERA",type: "CEBADA",class: "S.E.",unit: "t",market: "GR-Alhama",commpos: "S.Alm.",price: 180.00,year: 2014, week: 1},
+          {product: "HENO",type: "ALFALFA",class: "S.E.",unit: "t",market: "CA-Cádiz",commpos: "Alm.",price: 190.00,year: 2014, week: 5},
+          {product: "NACIONAL",type: "MAÍZ",class: "S.E.",unit: "t",market: "JA-Jaén",commpos: "E.A.I.",price: 180.00,year: 2014, week: 4},
+          {product: "ICEBERG",type: "LECHUGA",class: "I",unit: "100 kg",market: "AL-Almería",commpos: "C.M.",price: 74.48,year: 2014, week: 13},
+          {product: "ROMANA",type: "LECHUGA",class: "I",unit: "100 kg",market: "AL-Almería",commpos: "C.M.",price: 40.00,year: 2014, week: 13}, 
+          {product: "CERVECERA",type: "CEBADA",class: "S.E.",unit: "t",market: "GR-Granada",commpos: "S.Alm.",price: 180.00,year: 2014, week: 1},
           {product: "FINO O MESERO",type: "LIMÓN",class: "I",unit: "100 kg",market: "MA-Málaga",commpos: "C.M.",price: 85.00,year: 2013, week: 52},
           {product: "CLEMENTINA MEDIA TEMPORADA-CLEMENULES",type: "MANDARINA",class: "S.E.",unit: "100 kg",market: "HU-Huelva",commpos: "Árbol",price: 30.00,year: 2014, week: 1},
           {product: "CLEMENTINA MEDIA TEMPORADA-CLEMENULES",type: "MANDARINA",class: "S.E.",unit: "100 kg",market: "MA-Málaga",commpos: "Árbol",price: 16.00,year: 2014, week: 1},
@@ -132,94 +169,6 @@ function vse (app){
                 }
             });
         });
-
-//     //GET BASE, Paginating, Search, from&to
-//     app.get(rutavse, (req, res) => {
-//       //paginating
-//       let offset = 0;
-//       let limit = 0;
-
-//       if (req.query.offset) {
-//           offset = Number(req.query.offset);
-//       }
-//       if (req.query.limit) {
-//           limit = Number(req.query.limit);
-//       }
-
-//       //Búsquedas
-//       let query = {};
-
-//       if (req.query.market) {
-//           query.market = req.query.market;
-//       }
-//       if (req.query.product) {
-//           query.product = req.query.product;
-//       }
-//       if (req.query.type) {
-//           query.type = req.query.type;
-//       }
-//       if (req.query.class) {
-//           query.class = req.query.class;
-//       }
-//       if (req.query.unit) {
-//           query.unit = req.query.unit;
-//       }
-//       if (req.query.commpos) {
-//           query.commpos = req.query.commpos;
-//       }
-//       if (req.query.price) {
-//           query.price = Number(req.query.price);
-//       }
-//       if (req.query.year) {
-//           query.year = Number(req.query.year);
-//       }
-//       if (req.query.week) {
-//         query.week = Number(req.query.week);
-//     }
-
-//       //Búsquedas numéricas
-
-//       //precio semanal
-//       if (req.query.price_price_over) {
-//           query.price = { $gte: Number(req.query.price_price_over) };
-//       }
-//       if (req.query.price_price_below) {
-//           query.price = { $lte: Number(req.query.price_price_over) };
-//       }
-
-//     //GET and GET ?from&to and GET ?price
-//     const from = Number(req.query.from);
-//     const to = Number(req.query.to);
-//     const price = Number(req.query.price);
-
-//     if (from && to) {
-//         if (from >= to) {
-//             res.status(400).json("El rango es incorrecto");
-//         } else {
-//             query.price = { $gte: from, $lte: to };
-//         }
-//         } else if (price) {
-//             query.price = price;
-//         }
-//         db.find(query).sort({ market: req.body.market }).skip(offset).limit(limit).exec(function (err, docs) {
-//             if (err) {
-//                 res.status(500).json(err);
-//             } else if (docs.length === 0) {
-//                 res.status(404).json(`No existe ningún recurso.`);
-//             } else {
-//                 if(docs.length == 1){
-//                     res.json({...docs[0], _id: undefined})
-//                 }
-//                 else{
-//                     res.status(200).json(docs.map((p) => {
-//                         delete p._id;
-//                         return(p);
-//                     }));
-//                 }
-//             }
-//         });
-
-//   });
 
       //GET BASE, Paginating, Search, from&to 2
       app.get(rutavse, (req, res) => {
