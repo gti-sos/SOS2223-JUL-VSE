@@ -337,7 +337,7 @@ async function getProducts() {
     }
   }
 
-  async function deleteProduct(market, year, week, product) {
+  async function deleteProduct(product, year, week, market) {
     resultStatus = result = "";
     const res = await fetch(
       API + "/" + product + "/" + year + "/" + week + "/" + market,
