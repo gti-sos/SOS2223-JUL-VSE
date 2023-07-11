@@ -64,6 +64,29 @@ function vse (app){
     });
 });
 
+    //GET mercado + año + semana
+    app.get(rutavse + '/:market' + '/:year' + '/:week', (req, res) => {
+        const year = Number(req.params.year);
+        const market = req.params.market;
+        const week = Number(req.params.week);
+
+
+        db.findOne({ market: market, year: year, week: week }, (err, docs) => {
+            if (err) {
+                res.status(500).json('Error interno del servidor');
+            } else if (docs) {
+
+                delete (docs._id);
+                res.status(200).json(docs);
+
+                console.log(`Nuevo GET a ${rutavse}/${market}/${year}/${week}`);
+            } else {
+                res.status(404).json(`No existe ningún recurso para la provincia: ${market} en el año: ${year} con el número de disposición: ${week}.`);
+            }
+
+        });
+    });
+
     //GET BASE, Paginating, Search, from&to
     app.get(rutavse, (req, res) => {
       //paginating
