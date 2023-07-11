@@ -35,7 +35,7 @@
                 <DropdownItem divider/>
                 <DropdownItem><a href="/integrations/usohomiciderate">Widget Homicidios</a></DropdownItem>  
                 <DropdownItem divider/>
-                <DropdownItem><a href="/integrations/usocurrency">Widget Monedas</a></DropdownItem>  
+                <DropdownItem><a href="/integrations/usocurrency">Widget Moneda</a></DropdownItem>  
                 <DropdownItem divider/>
                 <DropdownItem><a href="/integrations/usoamazon">Widget Amazon</a></DropdownItem>  
               </DropdownMenu>
