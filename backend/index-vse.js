@@ -133,93 +133,195 @@ function vse (app){
             });
         });
 
-    //GET BASE, Paginating, Search, from&to
-    app.get(rutavse, (req, res) => {
-      //paginating
-      let offset = 0;
-      let limit = 0;
+//     //GET BASE, Paginating, Search, from&to
+//     app.get(rutavse, (req, res) => {
+//       //paginating
+//       let offset = 0;
+//       let limit = 0;
 
-      if (req.query.offset) {
-          offset = Number(req.query.offset);
-      }
-      if (req.query.limit) {
-          limit = Number(req.query.limit);
-      }
+//       if (req.query.offset) {
+//           offset = Number(req.query.offset);
+//       }
+//       if (req.query.limit) {
+//           limit = Number(req.query.limit);
+//       }
 
-      //Búsquedas
-      let query = {};
+//       //Búsquedas
+//       let query = {};
 
-      if (req.query.market) {
-          query.market = req.query.market;
-      }
-      if (req.query.product) {
-          query.product = req.query.product;
-      }
-      if (req.query.type) {
-          query.type = req.query.type;
-      }
-      if (req.query.class) {
-          query.class = req.query.class;
-      }
-      if (req.query.unit) {
-          query.unit = req.query.unit;
-      }
-      if (req.query.commpos) {
-          query.commpos = req.query.commpos;
-      }
-      if (req.query.price) {
-          query.price = Number(req.query.price);
-      }
-      if (req.query.year) {
-          query.year = Number(req.query.year);
-      }
-      if (req.query.week) {
-        query.week = Number(req.query.week);
-    }
+//       if (req.query.market) {
+//           query.market = req.query.market;
+//       }
+//       if (req.query.product) {
+//           query.product = req.query.product;
+//       }
+//       if (req.query.type) {
+//           query.type = req.query.type;
+//       }
+//       if (req.query.class) {
+//           query.class = req.query.class;
+//       }
+//       if (req.query.unit) {
+//           query.unit = req.query.unit;
+//       }
+//       if (req.query.commpos) {
+//           query.commpos = req.query.commpos;
+//       }
+//       if (req.query.price) {
+//           query.price = Number(req.query.price);
+//       }
+//       if (req.query.year) {
+//           query.year = Number(req.query.year);
+//       }
+//       if (req.query.week) {
+//         query.week = Number(req.query.week);
+//     }
 
-      //Búsquedas numéricas
+//       //Búsquedas numéricas
 
-      //precio semanal
-      if (req.query.price_price_over) {
-          query.price = { $gte: Number(req.query.price_price_over) };
-      }
-      if (req.query.price_price_below) {
-          query.price = { $lte: Number(req.query.price_price_over) };
-      }
+//       //precio semanal
+//       if (req.query.price_price_over) {
+//           query.price = { $gte: Number(req.query.price_price_over) };
+//       }
+//       if (req.query.price_price_below) {
+//           query.price = { $lte: Number(req.query.price_price_over) };
+//       }
 
-    //GET and GET ?from&to and GET ?price
-    const from = Number(req.query.from);
-    const to = Number(req.query.to);
-    const price = Number(req.query.price);
+//     //GET and GET ?from&to and GET ?price
+//     const from = Number(req.query.from);
+//     const to = Number(req.query.to);
+//     const price = Number(req.query.price);
 
-    if (from && to) {
-        if (from >= to) {
-            res.status(400).json("El rango es incorrecto");
-        } else {
-            query.price = { $gte: from, $lte: to };
+//     if (from && to) {
+//         if (from >= to) {
+//             res.status(400).json("El rango es incorrecto");
+//         } else {
+//             query.price = { $gte: from, $lte: to };
+//         }
+//         } else if (price) {
+//             query.price = price;
+//         }
+//         db.find(query).sort({ market: req.body.market }).skip(offset).limit(limit).exec(function (err, docs) {
+//             if (err) {
+//                 res.status(500).json(err);
+//             } else if (docs.length === 0) {
+//                 res.status(404).json(`No existe ningún recurso.`);
+//             } else {
+//                 if(docs.length == 1){
+//                     res.json({...docs[0], _id: undefined})
+//                 }
+//                 else{
+//                     res.status(200).json(docs.map((p) => {
+//                         delete p._id;
+//                         return(p);
+//                     }));
+//                 }
+//             }
+//         });
+
+//   });
+
+      //GET BASE, Paginating, Search, from&to 2
+      app.get(rutavse, (req, res) => {
+
+        
+        //paginating
+        let offset = 0;
+        let limit = 0;
+
+        if (req.query.offset) {
+            offset = Number(req.query.offset);
         }
-        } else if (price) {
-            query.price = price;
+        if (req.query.limit) {
+            limit = Number(req.query.limit);
         }
-        db.find(query).sort({ market: req.body.market }).skip(offset).limit(limit).exec(function (err, docs) {
+
+        //Búsquedas
+        let query = {};
+
+        if (req.query.market) {
+            query.market = req.query.market;
+        }
+        if (req.query.year) {
+            query.year = Number(req.query.year);
+        }
+        if (req.query.product) {
+            query.product = req.query.product;
+        }
+        if (req.query.class) {
+            query.class = req.query.class;
+        }
+        if (req.query.week) {
+            query.week = Number(req.query.week);
+        }
+        if (req.query.price) {
+            query.price = Number(req.query.price);
+        }
+        if (req.query.commpos) {
+            query.commpos = req.query.commpos;
+        }
+        if (req.query.type) {
+            query.type = req.query.type;
+        }
+        if (req.query.unit) {
+            query.unit = req.query.unit;
+        }
+
+        //Búsquedas numéricas
+
+        //week
+        if (req.query.week_over) {
+            query.week = { $gte: Number(req.query.week_over) };
+        }
+        if (req.query.week_below) {
+            query.week = { $lte: Number(req.query.week_below) };
+        }
+
+        //year
+        if (req.query.year_over) {
+            query.year = { $gte: Number(req.query.year_over) };
+        }
+        if (req.query.year_below) {
+            query.year = { $lte: Number(req.query.year_below) };
+        }
+
+        //price
+        if (req.query.price_over) {
+            query.price = { $gte: Number(req.query.price_over) };
+        }
+        if (req.query.price_below) {
+            query.price = { $lte: Number(req.query.price_below) };
+        }
+
+        //GET and GET ?from&to and GET ?year
+        const from = Number(req.query.from);
+        const to = Number(req.query.to);
+        const year = Number(req.query.year);
+
+
+        if (from && to) {
+            if (from >= to) {
+                res.status(400).json("El rango es incorrecto");
+            } else {
+                query.year = { $gte: from, $lte: to };
+            }
+        } else if (year) {
+            query.year = year;
+        }
+
+        db.find(query).sort({ year: req.body.year }).skip(offset).limit(limit).exec(function (err, docs) {
             if (err) {
                 res.status(500).json(err);
             } else if (docs.length === 0) {
                 res.status(404).json(`No existe ningún recurso.`);
             } else {
-                if(docs.length == 1){
-                    res.json({...docs[0], _id: undefined})
-                }
-                else{
-                    res.status(200).json(docs.map((p) => {
-                        delete p._id;
-                        return(p);
-                    }));
-                }
+                res.status(200).json(docs.map((p) => {
+                    delete p._id;
+                    return (p);
+                }));
             }
         });
-
-  });
+    });
 
       // POST
       app.post(rutavse, (req, res) => {
