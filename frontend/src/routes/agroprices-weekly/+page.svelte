@@ -340,7 +340,7 @@ async function getProducts() {
   async function deleteProduct(market, year, week) {
     resultStatus = result = "";
     const res = await fetch(
-      API + "/" + market + "/" + year + "/" + week
+      API + "/" + market + "/" + year + "/" + week,
       {
         method: "DELETE",
       }
