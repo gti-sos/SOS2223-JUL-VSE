@@ -134,12 +134,12 @@
                 <th>Mercado</th>
                 <th>Año</th>
                 <th>Semana</th>
+                <th>Producto</th>
+                <th>Tipo</th>
                 <th>Clase</th>
                 <th>Unidad</th>
                 <th>Posición comercial</th>
                 <th>Precio</th>
-                <th>Producto</th>
-                <th>Tipo</th>
             </tr>
         </thead>
         <tbody>
