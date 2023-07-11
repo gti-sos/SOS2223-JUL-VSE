@@ -381,6 +381,25 @@ function vse (app){
       });
   });
   
+      //DELETE de un recurso2.
+      app.delete(rutavse + "/:market/:year/:week", (req, res) => {
+
+        const market = req.params.market;
+        const year = Number(req.params.year);
+        const week = Number(req.params.week);
+
+        db.remove({ market: market, year: year, week: week }, {}, (err, numRemoved) => {
+            if (err) {
+                res.status(500).json({ message: "Error interno del servidor." });
+            } else if (numRemoved === 0) {
+                res.status(404).json({ message: "El recurso no existe." });
+            } else {
+                res.status(200).json({ message: "El recurso se ha borrado correctamente." });
+            }
+        });
+
+    });
+
 }
 
 export { vse };
