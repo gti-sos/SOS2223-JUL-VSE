@@ -19,7 +19,7 @@
         await getData();
     });
 
-    let API = "/api/v2";
+    let API = "/api/v1";
     if (dev) API = "http://localhost:12345" + API;
 
     async function getData() {

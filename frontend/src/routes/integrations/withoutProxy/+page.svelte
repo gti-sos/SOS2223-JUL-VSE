@@ -15,7 +15,7 @@
 
   let API_Comp = "https://sos2223-14.appspot.com/api/v2/apartment-occupancy-surveys";
   
-  let API = "/api/v2/provisions-for-the-year-2014";
+  let API = "/api/v1/agroprices-weekly";
   if (dev) API = "http://localhost:12345" + API;
   let result = "";
   let resultStatus = "";
@@ -37,7 +37,7 @@
 
     
       let chartData_comp = data.map((i)=>{     
-        return {label:i.province, y:i.traveler};
+        return {label:i.market, y:i.traveler};
         });
 
         console.log("comp:   "+JSON.stringify(chartData_comp, null, 2));
@@ -95,9 +95,9 @@
 
   async function loadCharts(chartData, chartData_comp){
 
-    chartData = chartData.map(({province, provisions_number}) => ({
-        label: province,
-        y: Number(provisions_number) * 10000
+    chartData = chartData.map(({market, products_number}) => ({
+        label: market,
+        y: Number(products_number) * 10000
            
 
    
@@ -112,7 +112,7 @@
             animationEnabled: true,
             exportEnabled: true,	
             title:{	
-                text: "PROVISIONES FRENTE A TÚRISTAS EN ANDALUCÍA"             
+                text: "PRODUCTOS FRENTE A TÚRISTAS EN ANDALUCÍA"             
             }, 
             axisY:{
                 title: "NÚMERO "
@@ -134,7 +134,7 @@
             },  
             {       
                 type: "spline",  	
-                name: "Provisiones",                
+                name: "Productos",                
                 showInLegend: true,	
                 dataPoints: chartData
 	}]

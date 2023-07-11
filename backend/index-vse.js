@@ -11,7 +11,113 @@ function vse (app){
       res.redirect(API_DOC_PORTAL);
     });
   
+    var paths = "/api/proxyvse"
+    var apiServerHost = "https://sos2223-17.appspot.com/api/v2/andalusian-bicycle-plans"
+    app.use(paths, function(req, res) {
+        var url = apiServerHost + req.url;
+        console.log('piped: ' + req.url);
+        req.pipe(request(url)).pipe(res);
+       });
+      
+
+
+    // USOS
   
+        //uso Amazon
+        app.get('/api/v1/amazondata', async (req, res) => {
+            const options = {
+                method: 'GET',
+                url: 'https://amazon-web-scraping-api.p.rapidapi.com/products/search',
+                params: {
+                  criteria: 'AMD Ryzen',
+                  page: '1',
+                  countryCode: 'US',
+                  languageCode: 'EN'
+                },
+                headers: {
+                  'X-RapidAPI-Key': '621cb83b84msh28cec764879c509p1ee6bbjsn826efdd3023b',
+                  'X-RapidAPI-Host': 'amazon-web-scraping-api.p.rapidapi.com'
+                }
+              };
+              try {
+                const response = await axios.request(options);
+                res.json(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+         });
+    
+    
+    
+    
+        //uso homicidios
+        app.get('/api/v1/homicide_rate', async (req, res) => {
+     
+            const options = {
+                method: 'GET',
+                url: 'https://world-cities-by-homicide-rate.p.rapidapi.com/2GI3px/_cities_by_homicide_rate',
+                headers: {
+                'X-RapidAPI-Key': 'b438c147e1mshf0cf7673386f32bp1a3702jsn4684b7b860b7',
+                'X-RapidAPI-Host': 'world-cities-by-homicide-rate.p.rapidapi.com'
+                }
+            };
+          
+            try {
+              const response = await axios(options);
+              res.json(response.data);
+            } catch (error) {
+              console.error(error);
+              res.status(500).json({ error: 'Error al obtener los datos' });
+            }
+          });
+          
+    
+    
+        //USO CURRENCY
+        app.get('/api/v1/uso_currency', async (req, res) => {
+            const options = {
+                method: 'GET',
+                url: 'https://currency23.p.rapidapi.com/currencyToAll',
+                params: {
+                  base: 'EUR',
+                  int: '1'
+                },
+                headers: {
+                  'X-RapidAPI-Key': 'b438c147e1mshf0cf7673386f32bp1a3702jsn4684b7b860b7',
+                  'X-RapidAPI-Host': 'currency23.p.rapidapi.com'
+                }
+              };
+    
+            try {
+                const response = await axios.request(options);
+                res.json(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        });
+    
+        //USO ALIEXPRESS
+        app.get('/api/v1/uso_sales', async (req, res) => {
+            const options = {
+                method: 'GET',
+                url: 'https://aliexpress-datahub.p.rapidapi.com/item_search_promotion_deals',
+                qs: { page: '1' },
+                headers: {
+                    'X-RapidAPI-Key': 'b270bea616msh4290fc927f6297bp15e5fajsnce54fefbd472',
+                    'X-RapidAPI-Host': 'aliexpress-datahub.p.rapidapi.com'
+                }
+            };
+    
+            try {
+                const response = await axios.request(options);
+    
+                res.json(response.data);
+    
+            } catch (error) {
+                console.error(error);
+            }
+    
+        });
 
     //Integración
     app.get(rutavse + "/data", async (req, res) => {
