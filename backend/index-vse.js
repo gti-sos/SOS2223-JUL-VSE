@@ -309,6 +309,36 @@ function vse (app){
         });
     });
 
+        //PUT actualizar disposicion
+        app.put(rutavse + '/:market' + '/:year' + '/:week', (req, res) => {
+            const market = req.params.market;
+            const year = Number(req.params.year);
+            const week = Number(req.params.week);
+    
+            db.findOne({ market: market, year: year, week: week }, (err, existe) => {
+                if (err) {
+                    return res.status(500).json(err);
+                }
+                if (!existe || market !== req.body.market || year !== Number(req.body.year) || week !== Number(req.body.week)) {
+                    return res.status(400).json({ message: "Disposición incorrecta." });
+                } else {
+                    existe.product = req.body.product || existe.product;
+                    existe.type = req.body.type || existe.type;
+                    existe.unit = req.body.unit || existe.unit;
+                    existe.commpos = req.body.commpos || existe.commpos;
+                    existe.price = Number(req.body.price) || existe.price;
+                    existe.class = req.body.class || existe.class;
+                    db.update({ _id: existe._id }, existe, {}, (err, numReplaced) => {
+                        if (err) {
+                            return res.status(500).json(err);
+                        }
+                        res.status(200).json({ message: "Disposición actualizada correctamente" });
+                        console.log("New PUT to /agroprices-weekly/" + market + "/" + year + "/" + week);
+                    });
+                }
+            });
+        });
+
 
   // Metodo PUT en URL base Victor(no se permite)
   app.put(BASE_API_URL + "/agroprices-weekly", (req, res) => {
