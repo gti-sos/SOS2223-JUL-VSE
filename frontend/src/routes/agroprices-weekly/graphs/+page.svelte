@@ -54,29 +54,29 @@
     });
     if(res.ok){
         try{
-            const markets = await res.json();
+            const products = await res.json();
 
-            const dic = markets.reduce((res, actual) => { //Agrupar por provincia
-                const mark = actual.market;
-                res[mark] = res[mark] || [];
-                res[mark].push(actual);
+            const dic = products.reduce((res, actual) => { //Agrupar por provincia
+                const prod = actual.market;
+                res[prod] = res[prod] || [];
+                res[prod].push(actual);
                 return res;
             }, {} ); // inicializar el res
             
             const groupedArray = Object.keys(dic).map(key => dic[key]);
-            const marketLengths = {};
-            let totalmarkets = 0;
+            const mercadoLengths = {};
+            let totalproducts = 0;
 
-            groupedArray.forEach(p =>{ //agrupar por provincia: numero de  productos 
+            groupedArray.forEach(p =>{ //agrupar por provincia: numero de  provisiones 
                 mercados.push(p[0]["market"]);
-                const nummarkets = p.length;
-                numero_mercados.push(nummarkets);
-                marketLengths[p[0]["market"]] = nummarkets;
-                totalmarkets += nummarkets;
+                const numproducts = p.length;
+                numero_mercados.push(numproducts);
+                mercadoLengths[p[0]["market"]] = numproducts;
+                totalproducts += numproducts;
             });
             let percentage = {};
-            Object.keys(marketLengths).forEach(mark => { // cambiar el numero de productos por su porcentage
-              percentage[mark] = (marketLengths[mark] / totalmarkets) * 100;
+            Object.keys(mercadoLengths).forEach(prod => { // cambiar el numero de provisiones por su porcentage
+              percentage[prod] = (mercadoLengths[prod] / totalproducts) * 100;
             });
             const chartData = Object.entries(percentage).map(([market, porcentage]) => ({
               name: market,
@@ -92,7 +92,7 @@
     }else{
         console.log("Error al cargar la gráfica");
     }
-  }
+    }
 
   async function loadCharts(graphData) {
     const chartData = graphData.map(({market, products_number }) => ({
