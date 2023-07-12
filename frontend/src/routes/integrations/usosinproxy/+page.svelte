@@ -97,7 +97,7 @@
 
     chartData = chartData.map(({market, products_number}) => ({
         label: market,
-        y: Number(products_number) * 10000
+        y: Number(products_number) * 100000
            
 
    
