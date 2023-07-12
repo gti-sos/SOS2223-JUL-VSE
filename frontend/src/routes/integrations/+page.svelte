@@ -9,8 +9,6 @@
     <CardBody>
       <CardLink href="/integrations/usoproxy">Integración Con Proxy</CardLink>
       <hr>
-      <!-- <CardLink href="/integrations/usosinproxy">Integración Sin Proxy</CardLink>
-      <hr> -->
     </CardBody>
   </Card>
   <Card>

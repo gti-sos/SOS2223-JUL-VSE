@@ -29,8 +29,6 @@
                 <DropdownMenu>
                 <DropdownItem><a href="/integrations/usoproxy">Integración Con Proxy</a></DropdownItem>
                 <DropdownItem divider/>
-                <DropdownItem><a href="/integrations/usosinproxy">Integración Sin Proxy</a></DropdownItem>     
-                <DropdownItem divider/>
                 <DropdownItem><a href="/integrations/usosimpsons">Widget Simpsons</a></DropdownItem>  
                 <DropdownItem divider/>
                 <DropdownItem><a href="/integrations/usohomiciderate">Widget Homicidios</a></DropdownItem>  
