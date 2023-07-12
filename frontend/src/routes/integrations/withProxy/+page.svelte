@@ -16,7 +16,7 @@
 
   let API_Comp = "https://sos2223-24.appspot.com/api/proxyvse";    
   
-  let API = "/api/v2/provisions-for-the-year-2014";
+  let API = "/api/v1/agroprices-weekly";
   if (dev){
      API = "http://localhost:12345" + API;
 } 
@@ -38,9 +38,9 @@
       resultStatus = status;
       await delay(500);
       let chartData = [];
-      chartData = data.map(({province, provisions_number}) => ({
-      y: Number(provisions_number) * 10000,
-      label: province.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      chartData = data.map(({market, products_number}) => ({
+      y: Number(products_number) * 10000,
+      label: market.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
       }));
 
 
@@ -67,7 +67,7 @@
 
       const chartData_comp = data.map((i)=>{
           return {
-            label:i.province,
+            label:i.market,
             y:i.population
           };
     });
@@ -114,7 +114,7 @@
     data: [{
       type: "bar",
       showInLegend: true,
-      name: "Provisiones",
+      name: "Productos",
       color: "red",
       dataPoints: chartData
     },
@@ -164,6 +164,6 @@
 </script>
 
 <main>
-  <h1 style="margin-top: 30px;">Número de Provisiones frente a la población en cada Provincia</h1>
+  <h1 style="margin-top: 30px;">Número de Productos frente a la población en cada Provincia</h1>
   <div id="myChart" style="height: 300px; width: 100%;"></div>
 </main>
