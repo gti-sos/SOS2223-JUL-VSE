@@ -13,7 +13,7 @@
     get_data();
   });
   async function get_data() {
-    const response = await fetch('/api/v2/economy-stats');
+    const response = await fetch('/api/v1/economy-stats');
     if (response.ok) {
       try {
         const dataReceived = await response.json();
