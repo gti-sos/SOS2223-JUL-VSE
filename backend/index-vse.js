@@ -552,10 +552,6 @@ function vse (app){
       res.status(500).send('Internal Server Error');
     }
   });
-  
-  app.listen(portt, () => {
-    console.log(`Proxy server is running on port ${portt}`);
-  });
 
 }
 
