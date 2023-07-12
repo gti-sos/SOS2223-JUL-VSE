@@ -27,9 +27,9 @@
             <Dropdown nav>
                 <DropdownToggle nav caret style="font-weight:bold; color:black; font-size: 18px;">Integraciones y Usos</DropdownToggle>
                 <DropdownMenu>
-                <DropdownItem><a href="/integrations/usoproxy">Integración Con Proxy</a></DropdownItem>
+                <DropdownItem><a href="/integrations/withproxy">Integración Con Proxy</a></DropdownItem>
                 <DropdownItem divider/>
-                <DropdownItem><a href="/integrations/usosinproxy">Integración Sin Proxy</a></DropdownItem>     
+                <DropdownItem><a href="/integrations/withoutproxy">Integración Sin Proxy</a></DropdownItem>     
                 <DropdownItem divider/>
                 <DropdownItem><a href="/integrations/usosimpsons">Widget Simpsons</a></DropdownItem>  
                 <DropdownItem divider/>
