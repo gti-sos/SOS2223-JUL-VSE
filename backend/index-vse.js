@@ -13,14 +13,6 @@ function vse (app){
     app.get(rutavse+"/docs",(req,res)=>{
       res.redirect(API_DOC_PORTAL);
     });
-  
-    var paths = "/api/proxyvse"
-    var apiServerHost = "https://sos2223-17.appspot.com/api/v2/andalusian-bicycle-plans"
-    app.use(paths, function(req, res) {
-        var url = apiServerHost + req.url;
-        console.log('piped: ' + req.url);
-        req.pipe(request(url)).pipe(res);
-       });
       
 
 
