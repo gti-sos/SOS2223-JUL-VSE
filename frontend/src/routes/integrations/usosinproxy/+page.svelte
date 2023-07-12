@@ -51,7 +51,7 @@
 
       console.log("unico : "+JSON.stringify(chartData_unique, null, 2));
 
-      let cmp = ['Almería', 'Cádiz', 'Córdoba', 'Granada', 'Huelva', 'Jaén', 'Málaga', 'Sevilla'];
+      let cmp = ['AL-Almería', 'CA-Cádiz', 'CO-Córdoba', 'GR-Granada', 'HU-Huelva', 'JA-Jaén', 'MA-Málaga', 'SE-Sevilla'];
 
     
       const chartData_ordered = chartData_unique.sort((a, b) => {    
