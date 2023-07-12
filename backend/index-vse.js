@@ -542,7 +542,7 @@ function vse (app){
 
   app.get('/api/v1/economy-stats', async (req, res) => {
     try {
-      const url = 'https://sos2223-jul-vse.appspot.com/api/v1/economy-stats';
+      const url = 'https://sos2223-10.appspot.com/api/v2/economy-stats';
       const response = await fetch(url);
       const data = await response.json();
       res.json(data);
