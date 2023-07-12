@@ -11,7 +11,7 @@
 
     <h2>Documentación de las APIs</h2>
     <ul>
-        <li><a href="https://sos2223-jul-vse.appspot.com/agroprices-weekly/docs">Documentación agroprices-weekly</a> (developed by Victor Manuel Sanchez Espada)</li>
+        <li><a href="https://sos2223-jul-vse.appspot.com/api/v1/agroprices-weekly/docs">Documentación agroprices-weekly</a> (developed by Victor Manuel Sanchez Espada)</li>
     </ul>
 
     <h2>Frontends</h2>

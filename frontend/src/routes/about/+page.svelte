@@ -1,5 +1,5 @@
 <section>
-    <h2>OUAEL BOUSSIALI</h2>
+    <h2>VÍCTOR MANUEL SÁNCHEZ ESPADA</h2>
     <ul>
         <li>
            <a href="https://www.youtube.com/watch?v=qv0dpeKOH_k&ab_channel=OUAELBOUSSIALI">Video</a>-- Video de youtube con todo explicado.
@@ -9,7 +9,7 @@
     <h2>Descripción</h2>
     <ul>
         <li>
-            Mi fuente de información están orientada a analizar los datos de las provisiones en Andalucía.
+            Mi fuente de información están orientada a analizar los datos de los productos agrícolas en Andalucía.
         </li>
     </ul>
 
