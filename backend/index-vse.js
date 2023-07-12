@@ -540,6 +540,23 @@ function vse (app){
       });
   });
 
+  app.get('/api/v1/economy-stats', async (req, res) => {
+    try {
+      const url = 'https://sos2223-jul-vse.appspot.com/api/v1/economy-stats';
+      const response = await fetch(url);
+      const data = await response.json();
+      res.json(data);
+      console.log("Proxy OK");
+    } catch (error) {
+      console.log('Error:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+  
+  app.listen(portt, () => {
+    console.log(`Proxy server is running on port ${portt}`);
+  });
+
 }
 
 export { vse };
