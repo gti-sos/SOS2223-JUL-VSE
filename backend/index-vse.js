@@ -2,6 +2,7 @@ import Datastore from 'nedb';
 import axios from 'axios';
 import request from 'request';
 var db = new Datastore();
+const portt = 3001;
 
 function vse (app){
     const BASE_API_URL = "/api/v1";
@@ -551,6 +552,10 @@ function vse (app){
       console.log('Error:', error);
       res.status(500).send('Internal Server Error');
     }
+  });
+
+  app.listen(portt, () => {
+    console.log(`Proxy server is running on port ${portt}`);
   });
 
 }
